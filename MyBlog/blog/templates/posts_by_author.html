@@ -1,0 +1,21 @@
+<!-- blog/templates/blog/posts_by_author.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts by {{ author.name }}</title>
+</head>
+<body>
+    <h1>Posts by {{ author.name }}</h1>
+    <p>{{ author.bio }}</p>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> (Published on: {{ post.created_at }})
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'post_list' %}">Back to Post List</a>
+</body>
+</html>

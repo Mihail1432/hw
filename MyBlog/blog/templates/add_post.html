@@ -1,0 +1,18 @@
+<!-- blog/templates/blog/add_post.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Post</title>
+</head>
+<body>
+    <h1>Add New Post</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'post_list' %}">Back to Post List</a>
+</body>
+</html>

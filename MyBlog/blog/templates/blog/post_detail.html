@@ -1,0 +1,27 @@
+<!-- blog/templates/blog/post_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>by <a href="{% url 'posts_by_author' post.author.id %}">{{ post.author.name }}</a></p>
+    <p>{{ post.content }}</p>
+    <p>Published on: {{ post.created_at }}</p>
+    
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>
+                <p><strong>{{ comment.author_name }}</strong> ({{ comment.created_date }}):</p>
+                <p>{{ comment.text }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'post_list' %}">Back to Post List</a>
+</body>
+</html>
